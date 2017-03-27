@@ -32,16 +32,6 @@ class php70u::params {
         'php70u-xml'
       ]
 
-      $php_packages_ms = [
-        'msodbcsql',
-        'mssql-tools',
-        'unixODBC-utf16-devel'
-      ]
-
-      $php_packages_final = [
-        'php70u-odbc'
-      ]
-
       exec { 'pecl-update-channels':
         command => '/usr/bin/pecl update-channels',
         timeout => 10000,
