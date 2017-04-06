@@ -1,6 +1,6 @@
-# Class: php70u
+# Class: php71u
 #
-# This class installs PHP 7.0 from IUS
+# This class installs PHP 7.1 from IUS
 #
 # Parameters:
 #
@@ -8,32 +8,32 @@
 #    Determine which version to install
 #
 # Actions:
-#   - Install PHP 7.0
+#   - Install PHP 7.1
 #
 # Sample Usage:
 #
 #  For a standard installation, use:
 #
-#    class { 'php70u': }
+#    class { 'php71u': }
 #
-class php70u (
-  $ensure = $::php70u::params::php_package_ensure
-) inherits ::php70u::params {
-  package { $::php70u::params::php_packages:
+class php71u (
+  $ensure = $::php71u::params::php_package_ensure
+) inherits ::php71u::params {
+  package { $::php71u::params::php_packages:
     ensure  => $ensure
   }
 
   $config = hiera_hash('php',{})
-  create_resources('php70u::config',$config)
+  create_resources('php71u::config',$config)
 
   $modules = hiera_hash('php::modules',{})
-  create_resources('php70u::modules',$modules)
+  create_resources('php71u::modules',$modules)
 
   $pecl = hiera_hash('php::pecl',{})
-  create_resources('php70u::pecl',$pecl)
+  create_resources('php71u::pecl',$pecl)
 
   $raw = hiera_hash('php::raw',{})
-  create_resources('php70u::raw',$raw)
+  create_resources('php71u::raw',$raw)
 
   exec { 'php-apachectl-restart':
     command     => '/usr/sbin/apachectl restart',
@@ -44,7 +44,7 @@ class php70u (
   exec { 'pecl-update-channels':
     command => '/usr/bin/pecl update-channels',
     timeout => 10000,
-    require => Package[$::php70u::params::php_packages]
+    require => Package[$::php71u::params::php_packages]
   }
 
 }

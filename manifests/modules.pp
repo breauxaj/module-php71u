@@ -1,13 +1,13 @@
-define php70u::modules (
-  $ensure = $::php70u::params::php_package_ensure
+define php71u::modules (
+  $ensure = $::php71u::params::php_package_ensure
 ) {
-  include ::php70u
+  include ::php71u
 
   $required = $title
 
-  package { "php70u-${required}":
+  package { "php71u-${required}":
     ensure  => $ensure,
-    require => Package[$::php70u::params::php_packages],
+    require => Package[$::php71u::params::php_packages],
   } ~> Exec['php-apachectl-restart']
 
 }

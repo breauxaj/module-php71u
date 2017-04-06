@@ -1,4 +1,4 @@
-define php70u::config (
+define php71u::config (
   $value
 ) {
   include ::php70u
@@ -11,7 +11,7 @@ define php70u::config (
     context => $context,
     onlyif  => "get ${key} != '${value}'",
     changes => "set ${key} '${value}'",
-    require => Package[$::php70u::params::php_packages],
+    require => Package[$::php71u::params::php_packages],
   } ~> Exec['php-apachectl-restart']
 
 }
