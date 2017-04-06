@@ -18,7 +18,6 @@ class php70u::params {
         'php70u-common',
         'php70u-dba',
         'php70u-devel',
-        'php70u-fpm',
         'php70u-gd',
         'php70u-intl',
         'php70u-json',
@@ -31,12 +30,6 @@ class php70u::params {
         'php70u-process',
         'php70u-xml'
       ]
-
-      exec { 'pecl-update-channels':
-        command => '/usr/bin/pecl update-channels',
-        timeout => 10000,
-        require => Package[$::php70u::params::php_packages]
-      }
     }
     default: {
       fail("The ${module_name} module is not supported on an ${::osfamily} based system.")

@@ -7,6 +7,7 @@ define php70u::modules (
 
   package { "php70u-${required}":
     ensure  => $ensure,
-  }
+    require => Package[$::php70u::params::php_packages],
+  } ~> Exec['php-apachectl-restart']
 
 }

@@ -11,6 +11,6 @@ define php70u::raw (
     mode    => '0644',
     content => $content,
     require => Package[$::php70u::params::php_packages],
-  }
+  } ~> Exec['php-apachectl-restart']
 
 }

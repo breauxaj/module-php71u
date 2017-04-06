@@ -1,0 +1,9 @@
+AddType text/html .php
+
+DirectoryIndex index.php
+
+<IfModule  mod_php7.c>
+  <FilesMatch \.php$>
+    SetHandler application/x-httpd-php
+  </FilesMatch>
+</IfModule>

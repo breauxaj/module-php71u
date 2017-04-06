@@ -35,4 +35,16 @@ class php70u (
   $raw = hiera_hash('php::raw',{})
   create_resources('php70u::raw',$raw)
 
+  exec { 'php-apachectl-restart':
+    command     => '/usr/sbin/apachectl restart',
+    onlyif      => '/usr/bin/test -x /usr/sbin/apachectl',
+    refreshonly => true
+  }
+
+  exec { 'pecl-update-channels':
+    command => '/usr/bin/pecl update-channels',
+    timeout => 10000,
+    require => Package[$::php70u::params::php_packages]
+  }
+
 }

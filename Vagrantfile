@@ -9,6 +9,8 @@ Vagrant.configure("2") do |config|
     centos.vm.box     = 'breauxaj/centos7'
     centos.vm.box_url = "http://vagrant.breaux.io/centos7.json"
 
+    centos.vm.network "private_network", ip: "172.16.0.42"
+
     centos.vm.provision :puppet do |puppet|
       puppet.manifests_path = "tests"
       puppet.manifest_file  = "vagrant.pp"

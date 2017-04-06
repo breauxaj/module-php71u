@@ -12,6 +12,6 @@ define php70u::config (
     onlyif  => "get ${key} != '${value}'",
     changes => "set ${key} '${value}'",
     require => Package[$::php70u::params::php_packages],
-  }
+  } ~> Exec['php-apachectl-restart']
 
 }
