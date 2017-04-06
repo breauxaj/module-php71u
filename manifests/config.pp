@@ -1,7 +1,7 @@
 define php71u::config (
   $value
 ) {
-  include ::php70u
+  include ::php71u
 
   $key = $title
 

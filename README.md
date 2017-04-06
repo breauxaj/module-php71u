@@ -1,4 +1,4 @@
-php70u
+php71u
 ======
 
 An alternative installation of PHP from IUS.
@@ -6,15 +6,15 @@ An alternative installation of PHP from IUS.
 Samples
 -------
 ```
-include php70u
+include php71u
 ```
 ```
-php70u::config {
+php71u::config {
   'Date/date.timezone': value => 'America/New_York';
 }
 ```
 ```
-php70u::modules { 'bcmath': ensure => 'latest', }
+php71u::modules { 'bcmath': ensure => 'latest', }
 ```
 
 License
